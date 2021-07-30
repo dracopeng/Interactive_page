@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <p>This is test paragraph for Xin's webpage</p>
+  <svg width=150 height=300></svg>
+  <scr>
+    data = [4, 8, 15, 16, 23, 42]
+    var margin=50;
+    var ht=200;
+    var wd=200;
+    var x = d3.scaleBand().domain(d3.range(0,d3.set(data).size())).range([0,wd]);
+    var y = d3.scaleLinear().domain([0,d3.max(data)]).range([ht,0]);
+    d3.select("svg").append('g')
+    .attr('transform','translate('+margin+','+margin+')')
+    .selectAll('rect').data(data).enter()
+    .append('rect').attr('x',function(d,i){return x(i);})
+    .attr('y',function(d,i){return y(d);})
+    .attr('width',wd/d3.set(data).size())
+    .attr('height',function(d,i){return ht-y(d);})
+    d3.select('svg').append('g')
+    .attr('transform','translate('+margin+','+margin+')')
+    .call(d3.axisLeft(y));
+    d3.select('svg').append('g')
+    .attr('transform','translate('+margin+','+(ht+margin)+')')
+    .call(d3.axisBottom(x));
+  </scr>
+  </body>
+</html>
