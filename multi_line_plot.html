@@ -24,11 +24,12 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
+// d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
+d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/Houston_2018_house_price_2.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+    return { date : d3.timeParse("%Y-%m-%d")(d.date), mlrent : d.mlrent, sales : d.sales, count : d.count, mlprice : d.mlprice, zhvi : d.zhvi }
   },
 
   // Now I can use this dataset:

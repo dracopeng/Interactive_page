@@ -1,4 +1,4 @@
-time,mlrent,sales count,mlprice,zhvi
+date,mlrent,sales_count,mlprice,zhvi
 2018-01-31,1332,5164,323782,205413
 2018-02-28,1336,5688,326159,205883
 2018-03-31,1339,6983,329640,206480
