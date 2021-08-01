@@ -3,14 +3,7 @@
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
-<body>
-  <h1>How Covid-19 impact on Houston housing market?</h1>
-  <hr>
-  <p> Here is the plot of rent cost index in Houston for the past 4 years. We can see that the rent cost index came to a plateau around
-    early 2020. However, after November 2020, the rent cost index also went up with a steady pace.
-</p>
-</body>
-<p>(Note: zoom in enabled. double click to return to default)</p>
+
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
@@ -32,11 +25,11 @@ var svg = d3.select("#my_dataviz")
 
 //Read the data
 // d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
-d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/Houston_2018_house_price_2.csv",
+d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/Houston_2018_house_price_4.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%Y-%m-%d")(d.date), mlrent : d.mlrent, sales_count : d.sales_count, mlprice : d.mlprice, zhvi : d.zhvi }
+    return { date : d3.timeParse("%Y-%m-%d")(d.date), mlrent : d.mlrent_pct, sales_count : d.sales_count_pct, mlprice : d.mlprice_pct, zhvi : d.zhvi_pct }
   },
 
   // Now I can use this dataset:
@@ -52,7 +45,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([d3.min(data, function(d) { return +d.mlrent; }), d3.max(data, function(d) { return +d.mlrent; })])
+      .domain([d3.min(data, function(d) { return +d.mlprice; }), d3.max(data, function(d) { return +d.mlprice; })])
       .range([ height, 0 ]);
     yAxis = svg.append("g")
       .call(d3.axisLeft(y));
@@ -85,7 +78,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.mlrent) })
+        .y(function(d) { return y(d.mlprice) })
         )
 
     // Add the brushing
@@ -121,7 +114,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
           .duration(1000)
           .attr("d", d3.line()
             .x(function(d) { return x(d.date) })
-            .y(function(d) { return y(d.mlrent) })
+            .y(function(d) { return y(d.mlprice) })
           )
     }
 
@@ -134,14 +127,10 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
         .transition()
         .attr("d", d3.line()
           .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.mlrent) })
+          .y(function(d) { return y(d.mlprice) })
       )
     });
 
 })
 
 </script>
-<p>Even though the rent cost index has gone up with a steady pace, but it has only gone up 3 percent since 2020 March.
-  If we compare this with the 16% increase in house listing price, we can clearly see that renting market is much more affordable at this moment.
-  If our goal is investment, the real estate market should be a good place to go.</p>
-<a href="list_price.html">Previous</a>  <a href=""> Next</a>
