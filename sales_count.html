@@ -45,7 +45,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([d3.min(data, function(d) { return +d.mlrent; }), d3.max(data, function(d) { return +d.mlrent; })])
+      .domain([d3.min(data, function(d) { return +d.sales_count; }), d3.max(data, function(d) { return +d.sales_count; })])
       .range([ height, 0 ]);
     yAxis = svg.append("g")
       .call(d3.axisLeft(y));
@@ -78,7 +78,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.mlrent) })
+        .y(function(d) { return y(d.sales_count) })
         )
 
     // Add the brushing
@@ -114,7 +114,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
           .duration(1000)
           .attr("d", d3.line()
             .x(function(d) { return x(d.date) })
-            .y(function(d) { return y(d.mlrent) })
+            .y(function(d) { return y(d.sales_count) })
           )
     }
 
@@ -127,7 +127,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
         .transition()
         .attr("d", d3.line()
           .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.mlrent) })
+          .y(function(d) { return y(d.sales_count) })
       )
     });
 

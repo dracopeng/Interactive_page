@@ -5,7 +5,10 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
+
 <div id="my_dataviz"></div>
+
+
 
 <script>
 
@@ -45,7 +48,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([d3.min(data, function(d) { return +d.mlrent; }), d3.max(data, function(d) { return +d.mlrent; })])
+      .domain([d3.min(data, function(d) { return +d.zhvi; }), d3.max(data, function(d) { return +d.zhvi; })])
       .range([ height, 0 ]);
     yAxis = svg.append("g")
       .call(d3.axisLeft(y));
@@ -78,7 +81,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.mlrent) })
+        .y(function(d) { return y(d.zhvi) })
         )
 
     // Add the brushing
@@ -114,7 +117,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
           .duration(1000)
           .attr("d", d3.line()
             .x(function(d) { return x(d.date) })
-            .y(function(d) { return y(d.mlrent) })
+            .y(function(d) { return y(d.zhvi) })
           )
     }
 
@@ -127,7 +130,7 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
         .transition()
         .attr("d", d3.line()
           .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.mlrent) })
+          .y(function(d) { return y(d.zhvi) })
       )
     });
 
