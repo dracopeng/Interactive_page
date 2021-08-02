@@ -58,6 +58,30 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
     yAxis = svg.append("g")
       .call(d3.axisLeft(y));
 
+      // add labels on x axis and y axis
+      svg.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("y", -60)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Median house listing price(dollar)");
+
+      svg.append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height + 30)
+      .text("Date");
+
+      svg.append("text")
+          .attr("x", (width / 2))
+          .attr("y", 10 - (margin.top / 2))
+          .attr("text-anchor", "middle")
+          .style("font-size", "16px")
+          .style("text-decoration", "underline")
+          .text("Median house listing price(dollar) v.s. Date");
+
     // Add a clipPath: everything out of this area won't be drawn.
     var clip = svg.append("defs").append("svg:clipPath")
         .attr("id", "clip")
@@ -145,4 +169,4 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
 <p>We see the listing price has gone up about 50k since March 2020 and that was about 16% increase.
   If the listing price has gone up so much, we now want to know what to do if we can't afford a house.
   Has the rent market has also went up?</p>
-<a href="sales_count.html">Previous</a>  <a href="rent_price.html"> Next</a>
+<a href="sales_count.html"><button type="button" name="button">Previous</button></a>  <a href="rent_price.html" style="margin-left: 20px"><button>Next</button></a>

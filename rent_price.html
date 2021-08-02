@@ -57,6 +57,30 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
     yAxis = svg.append("g")
       .call(d3.axisLeft(y));
 
+      // add labels on x axis and y axis
+      svg.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("y", -50)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Rent cost index(dollar)");
+
+      svg.append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height + 30)
+      .text("Date");
+
+      svg.append("text")
+          .attr("x", (width / 2))
+          .attr("y", 10 - (margin.top / 2))
+          .attr("text-anchor", "middle")
+          .style("font-size", "16px")
+          .style("text-decoration", "underline")
+          .text("Rent cost index(dollar) v.s. Date");
+
     // Add a clipPath: everything out of this area won't be drawn.
     var clip = svg.append("defs").append("svg:clipPath")
         .attr("id", "clip")
@@ -144,4 +168,4 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
 <p>Even though the rent cost index has gone up with a steady pace, but it has only gone up 3 percent since 2020 March.
   If we compare this with the 16% increase in house listing price, we can clearly see that renting market is much more affordable at this moment.
   If our goal is investment, the real estate market should be a good place to go.</p>
-<a href="list_price.html">Previous</a>  <a href=""> Next</a>
+<a href="list_price.html"><button>Previous</button></a>

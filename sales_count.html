@@ -63,6 +63,30 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
     yAxis = svg.append("g")
       .call(d3.axisLeft(y));
 
+    // add labels on x axis and y axis
+    svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", -50)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("Transaction count");
+
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + 30)
+    .text("Date");
+
+    svg.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 10 - (margin.top / 2))
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("Monthly transaction count vs Date");
+
     // Add a clipPath: everything out of this area won't be drawn.
     var clip = svg.append("defs").append("svg:clipPath")
         .attr("id", "clip")
@@ -149,4 +173,4 @@ d3.csv("https://raw.githubusercontent.com/dracopeng/Interactive_page/main/data/H
 </script>
 
 <p>Our next question is, has the listing price of a median home in Houston changes during Covid-19?</p>
-<a href="">Previous</a>  <a href="list_price.html"> Next</a>
+<a href="list_price.html" style="margin-left: 80px"><button>Next</button></a>
